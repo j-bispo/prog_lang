@@ -22,18 +22,24 @@ def query_mouse_position():
 
 if __name__ == "__main__":
   
-  while True:
-      pos = query_mouse_position()
-      print("Mouse Position: x=%d, y=%d"%(pos["x"],pos["y"]))
-      time.sleep(0.1)  # Adjust delay as needed
+    while True:
+        pos = query_mouse_position()
+        print("Mouse Position: x=%d, y=%d"%(pos["x"],pos["y"]))
 
-      if msvcrt.kbhit():
-          if msvcrt.getch() == b'c':
+        if(pos["x"] < 959 and pos["y"] < 539):      
+            print("Local A")
+
+        elif(pos["x"] > 959 and pos["y"] < 539):
+            print("Local B")
+
+        elif(pos["x"] < 959 and pos["y"] > 539):
+            print("Local C")
+
+        else:
+            print("Local D")
+
+        time.sleep(1)  # Adjust delay as needed
+
+        if msvcrt.kbhit():
+            if msvcrt.getch() == b'\x1b':
               break 
-
-  ch = "k" 
-
-  while(ch != "ESC"): 
-      
-      print("Hello world")
-      ch = str(input("ch: "))
