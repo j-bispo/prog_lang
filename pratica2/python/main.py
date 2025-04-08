@@ -1,3 +1,3 @@
-from my_test_package import welcome
+from my_test_package.module1 import welcome
 
 welcome()
