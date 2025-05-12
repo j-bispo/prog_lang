@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-#include "./include/list.h"
+#include "./include/lista.h"
 
 int main() {
     tList list = create_list();

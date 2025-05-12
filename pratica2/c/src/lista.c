@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "./include/list.h"
+#include "./include/lista.h"
 
 void insert_list(tList *list, int new_data) {
     tNode* new_node = (tNode*) malloc(sizeof(tNode));
