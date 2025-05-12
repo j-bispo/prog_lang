@@ -2,7 +2,7 @@
 
 # Author: Joseph Alberto
 
-# Date: February, 17.
+# Date: April, 18
 
 # Description: This program calculates the circle length and area or the perimeter and area of a rectangle, based on user input.
 
@@ -33,7 +33,9 @@ def rec_calc (side1, side2):  # Function to calculate rectangle elements
 
 if __name__ == "__main__":
 
-   while(msvcrt.getch() != b'\x1b'):
+   print("Press any key to start.\n")
+
+   for i in range(0, 1): # Wait for user to press any key to start the program
 
       print("Choose the calculation you want. \nEnter 1 if you want to calculate circle elements. \nEnter 2 if you want to calculate rectangle elements")
 
@@ -55,4 +57,4 @@ if __name__ == "__main__":
 
          print("The character entered is not 1 or 2.") # Error in choosing the calculation
 
-      print("\nIf you want continue, press any key. \nFor exit, press ESC.")
+      print("\nIf you want continue, press any key. \nFor exit, press ESC.\n")
