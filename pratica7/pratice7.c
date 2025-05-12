@@ -131,12 +131,16 @@ int main() {
 
     printf("BST in inorder traversal: ");
     inorder_traversal(root);
-    printf("\n");
+    printf("\n\n");
 
     root = remove_node(root, 20);
     printf("BST after removing 20: ");
     inorder_traversal(root);
     printf("\n");
+
+    search_tree(root, 50);
+    search_tree(root, 100);
+    search_tree(root, 20);
 
     delete_tree(root); // Free memory
 
