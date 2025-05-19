@@ -1,7 +1,7 @@
 /*
 Program: Linked tree usage
-Author: Douglas Almonfrey
-Date: May 28, 2024
+Author: Joseph Alberto
+Date: May 12, 2025
 Description: Implementation of a linked tree
 License: CC BY
 */
