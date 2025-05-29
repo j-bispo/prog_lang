@@ -10,6 +10,10 @@ void Empresa::contrata(Empregado& emp) {
     std::cout << "Contratando empregado: " << emp.pega_nome() << std::endl;
 }
 
+void Empresa::exibe() {
+    std::cout << "Informações:" << std::endl << "Empresa CNPJ: " << cnpj << std::endl << std::endl;
+}
+
 Empresa::~Empresa() {
     std::cout << "Destruindo Empresa:" << cnpj << std::endl;
 }

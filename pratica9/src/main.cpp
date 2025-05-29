@@ -1,20 +1,18 @@
 #include "./include/pessoa.hpp"
 #include "./include/empregado.hpp"
 #include "./include/empresa.hpp"
+#include "./include/microempreendedor.hpp"
 
 int main() {
-    Pessoa* p = new Pessoa("Lucas", 30, 1182345678);
-    Empregado* e = new Empregado("Luis", 23, 1500.00);
-    Pessoa* p2 = e;
+    Pessoa p("Lucas", 30, 987654321);
+    Empregado e("Luis", 23, 1000.00);
+    MicroEmpreendedor mei("João", 123456789, 159);
+    Empresa empresa(357);
 
-    Empresa empresa(2905700001);
-    // Ampliacao
-    empresa.paga(*e);
-    // Estreitamento
-    empresa.contrata(*(static_cast<Empregado*> (p2))); 
+    p.exibe();
+    e.exibe();
+    mei.exibe();
+    empresa.exibe();
 
-    // Libera memoria
-    delete p;
-    delete e;
     return 0;
 }

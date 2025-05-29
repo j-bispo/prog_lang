@@ -9,6 +9,7 @@ class Empresa {
     int cnpj;
 public:
     Empresa(int cnpj);
+    void exibe();
     void paga(Pessoa& pes);
     void contrata(Empregado& emp);
     virtual ~Empresa();

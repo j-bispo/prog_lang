@@ -14,6 +14,7 @@ protected:
 public:
     Pessoa(const std::string& nome, int idade, int cpf);
     const std::string& pega_nome();
+    void exibe();
     virtual ~Pessoa();
 };
 
