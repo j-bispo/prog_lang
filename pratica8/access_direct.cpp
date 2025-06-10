@@ -6,51 +6,49 @@ Description:
 License: CC BY
 */
 
-#include <stdio.h>
-#include <stdlib.h>  // To use the exit() function
-#include <string.h>  // To use the strlen() function
+#include <iostream>
+#include <fstream>
+#include <string>
 
-// Definition of the "data" structure to represent dates
-struct data {
+// Definition of the "Data" structure to represent dates
+struct Data {
     int d, m, a;  // Day, month, year
 };
 
 int main() {
-    struct data d1 = {7, 9, 1999};  // Initialization of the first date
-    struct data d2 = {12, 5, 2024};  // Initialization of the second date
-    
-    struct data e1;  // Declaration of another date for reading from the file
-    struct data e2;  // Declaration of another date for reading from the file
+    Data d1 = {7, 9, 1999};   // Initialization of the first date
+    Data d2 = {12, 5, 2024};  // Initialization of the second date
 
-    FILE *file;  // File pointer
-    char filename[30];  // String to store the file name
-    
-    // Asks the user for the file name
-    printf("Enter filename:");
-    fgets(filename, 30, stdin);  // Reads user input securely
-    filename[strlen(filename) - 1] = '\0';  // Removes the newline character
-    
+    Data e1;  // Declaration of another date for reading from the file
+    Data e2;  // Declaration of another date for reading from the file
+
+    std::string filename;
+    std::cout << "Enter filename: ";
+    std::getline(std::cin, filename);
+
     // Opens the file for binary writing
-    if (!(file = fopen(filename, "wb"))) {
-        printf("Error! Unable to open file for writing!\n");
-        exit(1);  // Exits the program in case of error
+    std::ofstream ofs(filename, std::ios::binary);
+    if (!ofs) {
+        std::cerr << "Error! Unable to open file for writing!" << std::endl;
+        return 1;
     }
-    fwrite(&d1, sizeof(struct data), 1, file);  // Writes the first structure to the file
-    fwrite(&d2, sizeof(struct data), 1, file);  // Writes the second structure to the file
-    fclose(file);  // Closes the file
+    ofs.write(reinterpret_cast<char*>(&d1), sizeof(Data));
+    ofs.write(reinterpret_cast<char*>(&d2), sizeof(Data));
+    ofs.close();
 
     // Opens the file for binary reading
-    if (!(file = fopen(filename, "rb"))) {
-        printf("Error! Unable to open file for reading!\n");
-        exit(1);  // Exits the program in case of error
+    std::ifstream ifs(filename, std::ios::binary);
+    if (!ifs) {
+        std::cerr << "Error! Unable to open file for reading!" << std::endl;
+        return 1;
     }
-    fread(&e1, sizeof(struct data), 1, file);  // Reads the first structure from the file
-    fread(&e2, sizeof(struct data), 1, file);  // Reads the second structure from the file
-    fclose(file);  // Closes the file
+    ifs.read(reinterpret_cast<char*>(&e1), sizeof(Data));
+    ifs.read(reinterpret_cast<char*>(&e2), sizeof(Data));
+    ifs.close();
 
     // Displays the dates read from the file
-    printf("First Date: %d/%d/%d\n", e1.a, e1.m, e1.d);
-    printf("Second Date: %d/%d/%d\n", e2.a, e2.m, e2.d);
+    std::cout << "First Date: " << e1.a << "/" << e1.m << "/" << e1.d << std::endl;
+    std::cout << "Second Date: " << e2.a << "/" << e2.m << "/" << e2.d << std::endl;
 
-    return 0;  // Indicates that the program executed successfully
+    return 0;
 }

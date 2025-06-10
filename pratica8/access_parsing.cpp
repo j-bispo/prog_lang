@@ -1,36 +1,34 @@
 /*
-Program: File Access Directly
+Program: File Access Parsing
 Author: Joseph Alberto
 Date: May 26, 2025
 Description: 
 License: CC BY
 */
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
 
 int main() {
-    FILE *filePtr;
-    char buffer[100]; // Buffer to store each line of text
-    char *token;
-
-    filePtr = fopen("test_file.txt", "r"); // Open for reading
-    if (filePtr == NULL) {
-        perror("Error opening file");
-        return 1; // Exit program if file opening fails
+    std::ifstream file("test_file.txt");
+    if (!file.is_open()) {
+        std::cerr << "Error opening file" << std::endl;
+        return 1;
     }
 
+    std::string line;
     // Read and parse each line of the file
-    while (fgets(buffer, sizeof(buffer), filePtr) != NULL) {
+    while (std::getline(file, line)) {
+        std::stringstream ss(line);
+        std::string token;
         // Assuming each line in the file is CSV (Comma-Separated Values) format
-        token = strtok(buffer, ",");
-        while (token != NULL) {
+        while (std::getline(ss, token, ',')) {
             // Process each token (field) in the line
-            printf("%s\n", token);
-            token = strtok(NULL, ",");
+            std::cout << token << std::endl;
         }
     }
 
-    fclose(filePtr); // Close the file
+    file.close();
     return 0;
 }
