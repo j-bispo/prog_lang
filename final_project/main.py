@@ -16,13 +16,11 @@
 # import pacote
 # pacote.module1.welcome()
 
-from pacote import module1
 from pacote import camera
 from pacote import captura
 
 def main():
 
-    module1.welcome()
     cap = camera.inicializar_camera()
     if cap:
         captura.capturar_imagem(cap, delay=5, filename='captura.jpg')
