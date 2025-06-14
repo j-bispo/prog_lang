@@ -1,7 +1,7 @@
 import cv2
 import time
 
-def capturar_imagem(cap, delay=5, filename='captura.jpg'):
+def capturar_imagem(cap, delay, filename='captura.jpg'):
     start_time = time.time()
     img_captured = False
     while True:
@@ -23,13 +23,6 @@ def capturar_imagem(cap, delay=5, filename='captura.jpg'):
             img_captured = True
 
         cv2.imshow('Webcam', frame)
-
-        # Captura a imagem final
-        ret, frame = cap.read()
-        if ret:
-            cv2.imwrite('captura.jpg', frame)
-            cv2.imshow('Foto Capturada', frame)
-            cv2.waitKey(2000)  # Mostra a foto capturada por 2 segundos
 
         # Fecha a janela se a pessoa apertar ESC ou após capturar a foto
         key = cv2.waitKey(1) & 0xFF
