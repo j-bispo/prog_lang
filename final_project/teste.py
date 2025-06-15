@@ -6,7 +6,7 @@ moldura = cv2.imread('moldura.png', cv2.IMREAD_UNCHANGED)  # usar UNCHANGED para
 
 # Definir posição e tamanho da área da moldura onde a foto será inserida
 # Exemplo: canto superior esquerdo (x, y) = (100, 100), tamanho 300x400 px
-x, y, w, h = 100, 100, 300, 400
+x, y, w, h = 200, 100, 600, 800
 
 # Redimensionar a foto para caber no espaço
 foto_redimensionada = cv2.resize(foto, (w, h))
