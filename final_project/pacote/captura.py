@@ -24,6 +24,9 @@ def capturar_imagem(cap, delay, filename='captura.jpg'):
 
         cv2.imshow('Webcam', frame)
 
+        imagem = cv2.imread(filename)
+        cv2.imshow('Imagem Capturada', imagem) # Exibe a imagem capturada
+
         # Fecha a janela se a pessoa apertar ESC ou após capturar a foto
         key = cv2.waitKey(1) & 0xFF
         if key == 27:
@@ -31,4 +34,4 @@ def capturar_imagem(cap, delay, filename='captura.jpg'):
 
     cv2.destroyAllWindows()
 
-    return cv2.imread(filename)
+    return imagem

@@ -25,4 +25,9 @@ def adicionar_moldura(imagem, moldura_path, output_path='foto_com_moldura.png'):
 
     cv2.imwrite(output_path, resultado)
     print(f"Foto com moldura salva como {output_path}")
+
+    cv2.imshow('Foto com Moldura', resultado) # Exibe a imagem com moldura
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
     return resultado
