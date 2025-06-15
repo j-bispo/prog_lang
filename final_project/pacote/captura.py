@@ -30,3 +30,5 @@ def capturar_imagem(cap, delay, filename='captura.jpg'):
             break
 
     cv2.destroyAllWindows()
+
+    return cv2.imread(filename)
