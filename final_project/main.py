@@ -1,7 +1,7 @@
-# Program: 
+# Program: Cabine de foto
 #Author: Joseph Alberto
 # Date: Jun 09, 2025
-# Description: 
+# Description: Esse código implementa a lógica de uma cabine de fotos, onde o usuário pode capturar uma imagem e adicionar uma moldura.
 # License: CC BY
 
 from pacote import camera
