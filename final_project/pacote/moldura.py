@@ -1,24 +1,20 @@
 import cv2
 import numpy as np
 
-def adicionar_moldura(imagem, moldura_path, output_path='foto_com_moldura.png'):
-    # Lê a moldura (com transparência caso PNG)
-    moldura = cv2.imread(moldura_path, cv2.IMREAD_UNCHANGED)
-    if moldura is None:
-        print("Não foi possível carregar a moldura.")
-        return
+def adicionar_moldura(redimensionada):
+    # Carrega a imagem de fundo (moldura) e a foto a ser inserida
+    fundo = cv2.imread('moldura.png')
 
-    # Redimensiona a moldura para o tamanho da imagem capturada
-    altura, largura = imagem.shape[:2]
-    moldura = cv2.resize(moldura, (largura, altura))
+    # Posição desejada (exemplo: x=130, y=245)
+    x, y = 132, 244
 
-    resultado = cv2.imread('moldura.png')
+    # Dimensões da foto redimensionada
+    h, w = redimensionada.shape[:2]
 
-    cv2.imwrite(output_path, resultado)
-    print(f"Foto com moldura salva como {output_path}")
+    # Insere a foto na posição (x, y) da moldura
+    fundo[y:y+h, x:x+w] = redimensionada
 
-    cv2.imshow('Foto com Moldura', resultado) # Exibe a imagem com moldura
+    cv2.imwrite('foto_salva.jpg', fundo)
+    cv2.imshow('Resultado', fundo)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-
-    return resultado

@@ -6,3 +6,6 @@ __all__ = ['camera']
 
 from . import moldura
 __all__ = ['moldura']
+
+from . import redimensionar
+__all__ = ['redimensionar']
