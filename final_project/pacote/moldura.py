@@ -17,6 +17,6 @@ def adicionar_moldura(redimensionada, nome):
     cv2.imwrite(nome, fundo)
     cv2.namedWindow('Resultado', cv2.WINDOW_NORMAL)  # Cria uma janela nomeada
     cv2.resizeWindow('Resultado', 950, 750)  # Redimensiona a janela de exibição
-    cv2.imshow('Resultado', fundo)
+    cv2.imshow('Resultado', fundo) # Exibe a imagem com a moldura
     cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    cv2.destroyAllWindows() # Fecha todas as janelas abertas

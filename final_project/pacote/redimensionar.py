@@ -11,4 +11,5 @@ def redimensionar(foto):
     foto_redimensionada = cv2.resize(foto, novo_tamanho)
     cv2.imwrite('redimensionada.jpg', foto_redimensionada)
 
+    # retorna a foto redimensionada
     return foto_redimensionada
