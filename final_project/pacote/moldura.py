@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-def adicionar_moldura(redimensionada):
+def adicionar_moldura(redimensionada, nome):
     # Carrega a imagem de fundo (moldura) e a foto a ser inserida
     fundo = cv2.imread('moldura.png')
 
@@ -14,7 +14,9 @@ def adicionar_moldura(redimensionada):
     # Insere a foto na posição (x, y) da moldura
     fundo[y:y+h, x:x+w] = redimensionada
 
-    cv2.imwrite('foto_salva.jpg', fundo)
+    cv2.imwrite(nome, fundo)
+    cv2.namedWindow('Resultado', cv2.WINDOW_NORMAL)  # Cria uma janela nomeada
+    cv2.resizeWindow('Resultado', 950, 750)  # Redimensiona a janela de exibição
     cv2.imshow('Resultado', fundo)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
